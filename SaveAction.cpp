@@ -19,19 +19,27 @@ void SaveAction::ReadActionParameters()
 	fileName = pIn->GetSrting(pOut) + ".txt";
 	//Clear the status bar
 	OutFile.open(fileName);
-
-	pOut->PrintMessage("Your file has been Successfully Saved");
+	//to check if the file is opened
+	if (OutFile.is_open())
+	{
+		pOut->PrintMessage("Your file has been successfully saved");
+	}
+	else {
+		pOut->PrintMessage("Save failed");
+	}
 }
 
 void SaveAction::Execute()
 {
 	ReadActionParameters();
+	//to check if the file is opened
 	if (OutFile.is_open())
 	{
+		//it take the current draw and fill color then the number of the figures
 		int numberOfFiguers = pManager->getFigCount();
 		string DrawClr = getColorName(UI.DrawColor);
-		OutFile << DrawClr;
 		string FillClr = getColorName(UI.FillColor);
+		OutFile << DrawClr;
 		OutFile << '\t' << FillClr << endl;
 		OutFile << numberOfFiguers << endl;
 		pManager->SaveAll(OutFile);

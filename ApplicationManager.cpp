@@ -200,7 +200,6 @@ void ApplicationManager::UpdateInterface() const
 {	
 	for (int i = 0; i < FigCount; i++)
 	{
-		if (FigList[i])
 			FigList[i]->Draw(pOut);
 	}	//Call Draw function (virtual member fn)
 }

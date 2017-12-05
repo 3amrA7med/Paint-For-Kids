@@ -28,9 +28,9 @@ void LoadAction::ReadActionParameters()
 	fileName = pIn->GetSrting(pOut) + ".txt";
 	//Clear the status bar
 	InputFile.open(fileName);
-	pOut->ClearDrawArea();
 	if (InputFile.is_open())
 	{
+		pOut->ClearDrawArea();
 		pOut->PrintMessage("Your file has been successfully loaded");
 	}
 	else { pOut->PrintMessage("No file found with name: " + fileName); }
